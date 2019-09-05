@@ -29,13 +29,16 @@ def spider(url):
     wait = WebDriverWait(browser, 10)
     wait.until(ec.presence_of_element_located((By.CLASS_NAME, 'job-search-word')))
 
-    companies = browser.find_elements(By.CLASS_NAME, 'job-company-name')
     jobs = browser.find_elements(By.CLASS_NAME, 'job-name> h3')
     salaries = browser.find_elements(By.CLASS_NAME, 'job-pay-text')
-    experiences = browser.find_elements(By.CLASS_NAME, 'job-desc > span')
+    companies = browser.find_elements(By.CLASS_NAME, 'job-company-name')
+    links = browser.find_elements(By.CLASS_NAME, 'job-name')
 
-    for i in range(len(experiences)):
-        print(experiences[i].text)
+    for i in range(len(links)):
+        print(jobs[i].text, end='\t')
+        print(salaries[i].text, end='\t')
+        print(companies[i].text, end='\t')
+        print(links[i].get_attribute('href'))
 
     browser.close()
 
