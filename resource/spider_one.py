@@ -72,7 +72,7 @@ def get_ppt_download_address():
 
 
 def downloader(urls):
-    count = 674
+    count = 1679
     for url in urls:
         # print(url[0])
         response = requests.get(url[0], headers)
